@@ -130,25 +130,10 @@ void setup()
   dis7seg.set(BRIGHT_TYPICAL);//BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7;
 
   Serial.begin(9600);
-  //Inicia calibracion
-  float x1, y1, x2, y2;
-  display_printString("CAL-", 500);
-  //Ingrese 0gramos
-  display_printString("P= O", 5000); //peso=0gramos
-  scale.setReadTimes(32);
-  y1 = 0.0f;
-  x1 = scale.averageValue();
-  //Ingrese 50gramos
-  display_printString("P=SO", 5000); //50 gramos
-  y2 = 50.0f;
-  x2 = scale.averageValue();
-  scale.calibrate(x1, y1, x2, y2);
+  //Scale, Offset:0.001199529647,-9740.830078125000
   scale.setReadTimes(1);
-  //Fin calibracion
-  Serial.print("Scale, Offset:");
-  Serial.print(scale.getScale());
-  Serial.print(',');
-  Serial.println(scale.getOffset());
+  scale.setScale(0.001199529647f);
+  scale.setOffset(-9740.83007812f);
   display_printString("init", 1000);
 }
 
