@@ -15,17 +15,18 @@
 #include "TM1637.h"
 #define CLK 2//pins definitions for TM1637 and can be changed to other ports       
 #define DIO 3
-TM1637 tm1637(CLK,DIO);
+TM1637 dis7seg(CLK,DIO);
 
 void setup()
 {
-  tm1637.init();
-  tm1637.set(BRIGHT_TYPICAL);//BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7;
+  dis7seg.init();
+  dis7seg.set(BRIGHT_TYPICAL);//BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7;
 }
 void loop()
 {
-  for (int i = 0; i < 32; i++){
-    tm1637.display(i%4,i);
+  for (int i = 0; i < 16; i++){
+    dis7seg.point(1);
+    dis7seg.display(i%4,i);
     delay(500);
   }
 }
