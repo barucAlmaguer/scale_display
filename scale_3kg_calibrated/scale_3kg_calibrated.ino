@@ -130,6 +130,7 @@ void setup()
   dis7seg.set(BRIGHT_TYPICAL);//BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7;
 
   Serial.begin(9600);
+  Serial.println("hola");
   //Scale, Offset:0.001199529647,-9740.830078125000
   scale.setReadTimes(1);
   scale.setScale(0.001199529647f);
@@ -142,6 +143,7 @@ void loop()
   float gramos = scale.getGram();
 
   display_printgrams(gramos);
+  Serial.println(gramos);
   delay(50);
 }
 
