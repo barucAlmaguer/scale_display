@@ -15,7 +15,7 @@ int gramos_cal;
 void setup()
 {
   Serial.begin(9600);
-  Serial.println("hola");
+  //Serial.println("hola");
   //Scale, Offset:0.001199529647,-9740.830078125000
   scale.setReadTimes(1);
   scale.setScale(0.001199529647f);
@@ -32,8 +32,7 @@ void setup()
   gramos_cal = scale.getGram();
   display.display();
   delay(1000);
-
-
+  
   display.setTextSize(2);
   display.setTextColor(WHITE);
 }
@@ -42,6 +41,14 @@ void loop()
 {
   int gramos = scale.getGram() - gramos_cal;
   Serial.println(gramos);
+  
+//  int val = scale.averageValue();
+//  Serial.println(gramos);
+//  display.clearDisplay();
+//  display.setCursor(0, 7);
+//  display.print(val);
+//  //display.print(".");
+//  display.display();
 
   display.clearDisplay();
   display.setCursor(0, 7);
